@@ -1,0 +1,29 @@
+
+
+
+class SmallestInfiniteSet {
+    private int smallest = 1;
+    private int[] set = new int[1001];
+
+    public SmallestInfiniteSet() {
+        for (int i = 1; i <= set.length; i++){
+            set[i - 1] = 1;
+        }    
+    }
+    
+    public int popSmallest() {
+        int output = smallest;
+        set[smallest - 1] = 0; 
+        while (set[smallest - 1] == 0){
+            smallest++;
+        }
+        return output;
+    }
+    
+    public void addBack(int num) {
+        set[num - 1] = num;
+        if (num < smallest){
+            smallest = num;
+        }
+    }
+}
