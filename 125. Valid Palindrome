@@ -1,0 +1,71 @@
+A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+
+Given a string s, return true if it is a palindrome, or false otherwise.
+
+
+
+Solution 1
+
+class Solution {
+    public String formate (String s){
+        s = s.replaceAll("!", "");
+        s = s.replaceAll("\\.", "");
+        s = s.replaceAll(",", "");
+        s = s.replaceAll(";", "");
+        s = s.replaceAll(":", "");
+        s = s.replaceAll("#", "");
+        s = s.replaceAll("№", "");
+        s = s.replaceAll("%", "");
+        s = s.replaceAll("\\$", "");
+        s = s.replaceAll("@", "");
+        s = s.replaceAll("\\(", "");
+        s = s.replaceAll("\\)", "");
+        s = s.replaceAll("\\{", "");
+        s = s.replaceAll("\\}", "");
+        s = s.replaceAll("\\[", "");
+        s = s.replaceAll("\\]", "");
+        s = s.replaceAll("\\\\", "");
+        s = s.replaceAll("/", "");
+        s = s.replaceAll("\\'", "");
+        s = s.replaceAll(" ", "");
+        s = s.replaceAll("_", "");
+        s = s.replaceAll("-", "");
+        s = s.replaceAll("\"", "");
+        s = s.replaceAll("\\?", "");
+        s = s.replaceAll("\'", "");
+        s = s.replaceAll("\\`", "");
+        s = s.toLowerCase();
+        return s;
+        }
+    public boolean isPalindrome(String s) {
+    s = formate(s);
+    for (int i = 0; i < (int) s.length() / 2; i++){
+        if (s.charAt(i) != s.charAt(s.length() - i - 1)){
+            return false;
+        }
+    }
+    return true;
+}
+}
+P.S. I didnt think there will be some many different charecters
+
+
+Solution 2
+
+class Solution {
+    public boolean isPalindrome(String s){
+        String keys = "abcdefghijklmnopqrstvwxyz0123456789";
+        String sNew = "";
+        s = s.toLowerCase();
+        for (int i = 0; i < s.length(); i++){
+            if (keys.contains(String.valueOf(s.charAt(i)))){
+                sNew += s.charAt(i);
+            }
+        }
+        for (int i = 0; i < (int) sNew.length() / 2; i++){
+            if (sNew.charAt(i) != sNew.charAt(sNew.length() - i - 1)){
+                return false;
+            }
+        }
+    return true;
+}
