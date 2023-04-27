@@ -1,0 +1,47 @@
+
+
+
+Solution 1
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        List<Integer> list = new ArrayList<>();
+        int zeroIndex = nums.length;
+        boolean zeroFound = false;
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] == 0){
+                zeroFound = true;
+                zeroIndex = i;
+            }
+        }
+        for (int i = 0; i < nums.length; i++){
+            if (nums[i] == target && nums[i] != 0 && zeroFound){
+                return new int[]{zeroIndex, i};
+            }
+            else{
+                for (int j = 0; j < list.size(); j++){
+                    if (nums[i] == list.get(j)){
+                        return new int[]{j, i};
+                    }
+                }
+                list.add(target - nums[i]);
+            }
+        }
+        return new int []{};
+    }
+}
+
+Solution 2
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        Map <Integer, Integer> map = new HashMap();
+        for (int i = 0; i < nums.length; i++){
+            if (map.containsKey(nums[i])){
+                return new int[]{map.get(nums[i]), i};
+            }
+            map.put(target - nums[i], i);
+        }
+        return null;
+    }
+}
