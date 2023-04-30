@@ -1,0 +1,16 @@
+
+
+
+class Solution {
+    public int reverse(int x) {
+        long num;
+        if (x < 0){
+            num = 0 - Long.parseLong(new StringBuilder(String.valueOf(x).substring(1)).reverse().toString());    
+        }
+        else{
+            num = Long.parseLong(new StringBuilder(String.valueOf(x)).reverse().toString());
+        }
+        if (num > Math.pow(2, 31) - 1 || num < 0 - Math.pow(2, 31)){return 0;}
+        return (int) num;
+    }
+}
